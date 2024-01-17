@@ -1,0 +1,21 @@
+version: '3.4'
+services:
+  #backend
+  app:
+    container_name: weather
+    env_file:
+      - .env
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+
+  database:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=aryan
+      - MONGO_INITDB_ROOT_PASSWORD=123456789
