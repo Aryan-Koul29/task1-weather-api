@@ -8,7 +8,7 @@ async function bootstrap() {
     .setTitle('City Weather API')
     .setDescription('Your API description')
     .setVersion('1.0')
-    .addServer('http://localhost:3000/', 'Local environment')
+    // .addServer('http://localhost:3000/', 'Local environment')
     // .addBasicAuth()
     .build();
 

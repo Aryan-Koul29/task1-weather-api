@@ -1,7 +1,7 @@
 import { Controller, Get, Res, HttpStatus } from '@nestjs/common';
-import { CityService } from 'src/service/city/city.service';
+import { CityService } from '../../service/city/city.service';
 import { ApiTags, ApiResponse } from '@nestjs/swagger';
-import { UserWeatherDto } from 'src/dto/user-weather.dto';
+import { UserWeatherDto } from '../../dto/user-weather.dto';
 
 @ApiTags('Users')
 @Controller('users')

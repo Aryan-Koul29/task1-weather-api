@@ -9,7 +9,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - "3000:3000"
     depends_on:
       - database
 
@@ -19,3 +19,20 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=aryan
       - MONGO_INITDB_ROOT_PASSWORD=123456789
+  
+  nginx:
+    image: reverse-proxy
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx-c   
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+  
+  test:
+    build: .
+    command: npm test
+

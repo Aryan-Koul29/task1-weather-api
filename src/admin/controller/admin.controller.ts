@@ -1,9 +1,10 @@
 import { Controller, Post, Get, Res, HttpStatus, Body, Headers, UnauthorizedException, Delete, Param } from '@nestjs/common';
-import { CreateCityDto } from 'src/dto/create-city.dto';
-import { CityService } from 'src/service/city/city.service';
+import { CreateCityDto } from '../../dto/create-city.dto';
+import { CityService } from '../../service/city/city.service';
 import { ApiBody, ApiHeader, ApiParam, ApiProperty, ApiResponse, ApiTags, ApiBasicAuth } from '@nestjs/swagger';
-import { AdminWeatherDto } from 'src/dto/admin-weather.dto';
-import { AdminCityDto } from 'src/dto/admin-city.dto';
+import { AdminWeatherDto } from '../../dto/admin-weather.dto';
+import { AdminCityDto } from '../../dto/admin-city.dto';
+import { AdminDeleteCityDto } from '../../dto/admin-delete-city.dto';
 
 @ApiTags('Admin')
 @Controller('admin')
@@ -83,6 +84,12 @@ export class AdminController {
    @Delete('/:name')
    @ApiHeader({ name: "password", required: true })
    @ApiHeader({ name: "username", required: true })
+   @ApiResponse({
+      status: 202,
+      description: 'City has been successfully deleted',
+      type: AdminDeleteCityDto,
+      isArray: true,
+    })
    async deleteCity(@Res() response, @Param('name') cityName: string, @Headers() headers) {
       try {
          if (headers.username === this.credentials.username && headers.password === this.credentials.password) {

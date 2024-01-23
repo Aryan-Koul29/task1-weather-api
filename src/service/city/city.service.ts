@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreateCityDto } from 'src/dto/create-city.dto';
-import { ICity } from 'src/interface/cities.interface';
+import { CreateCityDto } from '../../dto/create-city.dto';
+import { ICity } from '../../interface/cities.interface';
 import { Model } from "mongoose";
 import { firstValueFrom } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
